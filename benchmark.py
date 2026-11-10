@@ -14,11 +14,13 @@ def words(text):
     return re.findall(r"[a-z0-9]+", text.lower())
 
 
-def retrieve(query, documents, index, adaptive):
+def retrieve(query, documents, index, adaptive, *, require_term_coverage=False):
     query_words = set(words(query)) - STOP_WORDS
     identifiers = query_words & documents.keys()
     if adaptive and len(identifiers) == 1:
-        return sorted(identifiers)
+        doc_id = next(iter(identifiers))
+        if not require_term_coverage or query_words <= index[doc_id]:
+            return [doc_id]
 
     scored = [
         (len(query_words & tokens), doc_id)
@@ -28,7 +30,7 @@ def retrieve(query, documents, index, adaptive):
             if score >= 2 or doc_id in identifiers]
 
 
-def evaluate(dataset, adaptive, repeats):
+def evaluate(dataset, adaptive, repeats, *, require_term_coverage=False):
     documents = dataset["documents"]
     index = {doc_id: set(words(f"{doc_id} {body}")) for doc_id, body in documents.items()}
     rows = []
@@ -36,7 +38,10 @@ def evaluate(dataset, adaptive, repeats):
     for case in dataset["cases"]:
         for _ in range(repeats):
             start = perf_counter_ns()
-            citations = retrieve(case["query"], documents, index, adaptive)
+            citations = retrieve(
+                case["query"], documents, index, adaptive,
+                require_term_coverage=require_term_coverage,
+            )
             samples.append(perf_counter_ns() - start)
         expected = set(case["expected"])
         rows.append({
@@ -68,6 +73,9 @@ def main():
     dataset = json.loads(Path(__file__).with_name("dataset-v1.json").read_text())
     results = {label: evaluate(dataset, adaptive, args.repeats)
                for label, adaptive in (("fixed", False), ("adaptive", True))}
+    results["guarded_adaptive"] = evaluate(
+        dataset, True, args.repeats, require_term_coverage=True,
+    )
     print(json.dumps(results, indent=2))
 
 
