@@ -1,0 +1,239 @@
+{
+  "fixed": {
+    "exact_citations": 10,
+    "cases": 10,
+    "correct_abstentions": 2,
+    "abstention_cases": 2,
+    "mean_context_words": 10.9,
+    "retrieval_latency_ns": {
+      "p50": 3108,
+      "p95": 4258
+    },
+    "rows": [
+      {
+        "query": "When should we rotate API credentials?",
+        "expected": [
+          "r01"
+        ],
+        "citations": [
+          "r01"
+        ],
+        "exact": true,
+        "context_words": 14
+      },
+      {
+        "query": "r02 elevated access",
+        "expected": [
+          "r02"
+        ],
+        "citations": [
+          "r02"
+        ],
+        "exact": true,
+        "context_words": 12
+      },
+      {
+        "query": "r03 restore drills",
+        "expected": [
+          "r03"
+        ],
+        "citations": [
+          "r03"
+        ],
+        "exact": true,
+        "context_words": 10
+      },
+      {
+        "query": "exact identifiers and semantic search",
+        "expected": [
+          "r04"
+        ],
+        "citations": [
+          "r04"
+        ],
+        "exact": true,
+        "context_words": 9
+      },
+      {
+        "query": "policy checks user role",
+        "expected": [
+          "r05"
+        ],
+        "citations": [
+          "r05"
+        ],
+        "exact": true,
+        "context_words": 11
+      },
+      {
+        "query": "r06 failed backups",
+        "expected": [
+          "r06"
+        ],
+        "citations": [
+          "r06"
+        ],
+        "exact": true,
+        "context_words": 11
+      },
+      {
+        "query": "volcano rainfall",
+        "expected": [],
+        "citations": [],
+        "exact": true,
+        "context_words": 0
+      },
+      {
+        "query": "r99 warranty",
+        "expected": [],
+        "citations": [],
+        "exact": true,
+        "context_words": 0
+      },
+      {
+        "query": "r02 and r05 approval policy",
+        "expected": [
+          "r02",
+          "r05"
+        ],
+        "citations": [
+          "r02",
+          "r05"
+        ],
+        "exact": true,
+        "context_words": 23
+      },
+      {
+        "query": "r04 restore drills",
+        "expected": [
+          "r03",
+          "r04"
+        ],
+        "citations": [
+          "r03",
+          "r04"
+        ],
+        "exact": true,
+        "context_words": 19
+      }
+    ]
+  },
+  "adaptive": {
+    "exact_citations": 9,
+    "cases": 10,
+    "correct_abstentions": 2,
+    "abstention_cases": 2,
+    "mean_context_words": 9.9,
+    "retrieval_latency_ns": {
+      "p50": 2708,
+      "p95": 3896
+    },
+    "rows": [
+      {
+        "query": "When should we rotate API credentials?",
+        "expected": [
+          "r01"
+        ],
+        "citations": [
+          "r01"
+        ],
+        "exact": true,
+        "context_words": 14
+      },
+      {
+        "query": "r02 elevated access",
+        "expected": [
+          "r02"
+        ],
+        "citations": [
+          "r02"
+        ],
+        "exact": true,
+        "context_words": 12
+      },
+      {
+        "query": "r03 restore drills",
+        "expected": [
+          "r03"
+        ],
+        "citations": [
+          "r03"
+        ],
+        "exact": true,
+        "context_words": 10
+      },
+      {
+        "query": "exact identifiers and semantic search",
+        "expected": [
+          "r04"
+        ],
+        "citations": [
+          "r04"
+        ],
+        "exact": true,
+        "context_words": 9
+      },
+      {
+        "query": "policy checks user role",
+        "expected": [
+          "r05"
+        ],
+        "citations": [
+          "r05"
+        ],
+        "exact": true,
+        "context_words": 11
+      },
+      {
+        "query": "r06 failed backups",
+        "expected": [
+          "r06"
+        ],
+        "citations": [
+          "r06"
+        ],
+        "exact": true,
+        "context_words": 11
+      },
+      {
+        "query": "volcano rainfall",
+        "expected": [],
+        "citations": [],
+        "exact": true,
+        "context_words": 0
+      },
+      {
+        "query": "r99 warranty",
+        "expected": [],
+        "citations": [],
+        "exact": true,
+        "context_words": 0
+      },
+      {
+        "query": "r02 and r05 approval policy",
+        "expected": [
+          "r02",
+          "r05"
+        ],
+        "citations": [
+          "r02",
+          "r05"
+        ],
+        "exact": true,
+        "context_words": 23
+      },
+      {
+        "query": "r04 restore drills",
+        "expected": [
+          "r03",
+          "r04"
+        ],
+        "citations": [
+          "r04"
+        ],
+        "exact": false,
+        "context_words": 9
+      }
+    ]
+  }
+}

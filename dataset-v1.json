@@ -1,0 +1,22 @@
+{
+  "documents": {
+    "r01": "Rotate API credentials every ninety days. Record the rotation date in the audit log.",
+    "r02": "Request elevated access through the approval queue. An owner reviews the request.",
+    "r03": "Run restore drills quarterly. Record elapsed time and recovery point.",
+    "r04": "Use hybrid retrieval for exact identifiers and semantic search.",
+    "r05": "Document scope follows the user role. Policy checks run before retrieval.",
+    "r06": "Review failed backups each morning. Escalate repeated failures to the owner."
+  },
+  "cases": [
+    {"query": "When should we rotate API credentials?", "expected": ["r01"]},
+    {"query": "r02 elevated access", "expected": ["r02"]},
+    {"query": "r03 restore drills", "expected": ["r03"]},
+    {"query": "exact identifiers and semantic search", "expected": ["r04"]},
+    {"query": "policy checks user role", "expected": ["r05"]},
+    {"query": "r06 failed backups", "expected": ["r06"]},
+    {"query": "volcano rainfall", "expected": []},
+    {"query": "r99 warranty", "expected": []},
+    {"query": "r02 and r05 approval policy", "expected": ["r02", "r05"]},
+    {"query": "r04 restore drills", "expected": ["r03", "r04"]}
+  ]
+}
