@@ -21,3 +21,19 @@ class RetrievalTests(unittest.TestCase):
         self.assertEqual(guarded["rows"][-1]["citations"], ["r03", "r04"])
         self.assertEqual(guarded["rows"][1]["citations"], ["r02"])
         self.assertEqual(guarded["correct_abstentions"], 2)
+
+    def test_checked_in_report_matches_reproducible_fields(self):
+        directory = Path(__file__).parent
+        dataset = json.loads((directory / "dataset-v1.json").read_text())
+        expected = json.loads((directory / "results-guarded-v1.json").read_text())
+        results = {
+            "fixed": evaluate(dataset, False, 1),
+            "adaptive": evaluate(dataset, True, 1),
+            "guarded_adaptive": evaluate(dataset, True, 1, require_term_coverage=True),
+        }
+        for strategy, result in results.items():
+            with self.subTest(strategy=strategy):
+                expected_fields = dict(expected[strategy])
+                del expected_fields["retrieval_latency_ns"]
+                del result["retrieval_latency_ns"]
+                self.assertEqual(result, expected_fields)

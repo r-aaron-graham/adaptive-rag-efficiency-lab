@@ -52,3 +52,5 @@ docker run --rm reviewer-smoke
 ```
 
 The expected result is a JSON benchmark report containing fixed, adaptive, and guarded adaptive strategies. The benchmark uses synthetic inputs. Latency varies by machine and is excluded from the container acceptance check.
+
+The benchmark regression test compares all deterministic fields, including per-query citations and abstentions, with the checked-in report. Timing is machine-dependent and excluded from the comparison.
