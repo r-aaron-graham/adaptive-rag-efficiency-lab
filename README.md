@@ -43,3 +43,12 @@ on average in this fixture. The guarded route matches the fixed baseline's
 context size.
 
 Have a query that exposes another routing failure? [Open an issue](https://github.com/r-aaron-graham/adaptive-rag-efficiency-lab/issues/new) with a synthetic query, expected source IDs, and the actual IDs returned. [Follow the author](https://github.com/r-aaron-graham) for related AI engineering projects.
+
+## Deployment verification
+
+```sh
+docker build -t reviewer-smoke .
+docker run --rm reviewer-smoke
+```
+
+The expected result is a JSON benchmark report containing fixed, adaptive, and guarded adaptive strategies. The benchmark uses synthetic inputs. Latency varies by machine and is excluded from the container acceptance check.
